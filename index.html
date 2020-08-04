@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <button type="submit" id="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p class="action-left" id="try">3 try left</p>
                             </div>
                     </div>
                 </div>
@@ -58,7 +58,8 @@
 
     <script>
         //first task//
-        document.getElementById('notifySection').style.display="none";
+        document.getElementById('cross').style.display="none";
+        document.getElementById('matched').style.display="none";
         //second task
        
             document.getElementById('generatePin').addEventListener('click',function(){
@@ -107,16 +108,26 @@
             document.getElementById('num0').addEventListener('click',function(){
                 var numberShow= document.getElementById('numberInput').value;
              document.getElementById('numberInput').value +=num0.innerText;
-            });
+            });          
+           
+           document.getElementById('clear').addEventListener('click',function(){
+                var clear= document.getElementById('numberInput');
+                 clear.value="";
+           })
 
+           document.getElementById('decrease').addEventListener('click',function(){
+                var decrease= document.getElementById('numberInput');
+                decrease.value=decrease.value.slice(0,-1);
+           })
 
-          
-
-            document.getElementById('submit').addEventListener('click',function(){
-                if( document.getElementById('pin').value ==  document.getElementById('numberInput').value){
-                       alert('hurray');
+        document.getElementById('submit').addEventListener('click',function(){
+         if( document.getElementById('pin').value ==  document.getElementById('numberInput').value){
+                    document.getElementById('matched').style.display="block";
+                   
+                    
             }else{
-                alert('sorry wrong input');
+                document.getElementById('cross').style.display="block";
+                
             }
        
         })//
